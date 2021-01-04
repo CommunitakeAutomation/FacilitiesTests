@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<test thread-count="5" name="Test">
+		<classes>
+			<class name="com.communitake.tests.automation.intact4.FacilitiesTest" />
+			<class name="com.communitake.tests.automation.ged.FacilitiesTest" />
+			<class name="com.communitake.tests.automation.gms.FacilitiesTests" />
+			<class name="com.communitake.tests.automation.intactR.FacilitiesTest" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

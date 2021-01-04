@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="com.communitake.tests.automation.intactR.FacilitiesTest">
+        <methods>
+          <include name="blockAirplane"/>
+          <include name="blockGps"/>
+          <include name="blockSmsApp"/>
+          <include name="Web"/>
+          <include name="mobile"/>
+          <include name="blockFactoryReset"/>
+          <include name="blockUninstallApp"/>
+          <include name="Appium"/>
+          <include name="blockMobileData"/>
+          <include name="tearDown"/>
+          <include name="blockAppinst"/>
+          <include name="blockCamera"/>
+        </methods>
+      </class> <!-- com.communitake.tests.automation.intactR.FacilitiesTest -->
+      <class name="com.communitake.tests.automation.intact4.FacilitiesTest">
+        <methods>
+          <include name="blockSmsApp"/>
+          <include name="tearDown"/>
+          <include name="blockAppinst"/>
+          <include name="mobile"/>
+          <include name="blockUninstallApp"/>
+          <include name="Appium"/>
+          <include name="Web"/>
+        </methods>
+      </class> <!-- com.communitake.tests.automation.intact4.FacilitiesTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
