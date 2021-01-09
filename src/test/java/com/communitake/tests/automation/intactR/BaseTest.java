@@ -42,8 +42,9 @@ public abstract class BaseTest {
 	
 	@BeforeSuite
 	public AppiumDriver<MobileElement> mobile() throws MalformedURLException  {
-		//AppiumDriver<MobileElement> mobileDriver;
-		service = AppiumDriverLocalService.buildDefaultService();
+		AppiumServiceBuilder builder = new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\Nissim Automation\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"));
+		service = builder.build();
+		//service = AppiumDriverLocalService.buildDefaultService();
 		service.start();
 		DesiredCapabilities caps = new DesiredCapabilities();
 		caps.setCapability("deviceName", "CTIPR01");
