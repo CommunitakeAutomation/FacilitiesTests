@@ -1,6 +1,7 @@
 package com.communitake.tests.automation.intactR;
 
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.communitake.tests.automation.mobilepageobject.AndroidSettingsPage;
@@ -17,12 +18,9 @@ import com.communitake.tests.automation.mobilepageobject.LocationPage;
 import com.communitake.tests.automation.mobilepageobject.MobileHomePage;
 import com.communitake.tests.automation.mobilepageobject.MorePage;
 import com.communitake.tests.automation.mobilepageobject.SmsPage;
-import com.communitake.tests.automation.mobilepageobject.WiFiPage;
 import com.communitake.tests.automation.webpageobject.AndroidRestrictionsPage;
 import com.communitake.tests.automation.webpageobject.HomePage;
 import com.communitake.tests.automation.webpageobject.PoliciesPage;
-
-import org.testng.Assert;
 
 
 
