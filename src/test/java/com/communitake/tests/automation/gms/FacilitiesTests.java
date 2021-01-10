@@ -16,9 +16,17 @@ import com.communitake.tests.automation.webpageobject.AndroidRestrictionsPage;
 import com.communitake.tests.automation.webpageobject.HomePage;
 import com.communitake.tests.automation.webpageobject.PoliciesPage;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+
 
 public class FacilitiesTests extends BaseTest3 {
-
+	
+	@Feature("GMS Bluetooth")
+	@Epic("Blocking Bluetooth")
+	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=1, testName="Bluetooth")
 	public void blockBT() throws  InterruptedException {
 		
@@ -45,7 +53,9 @@ public class FacilitiesTests extends BaseTest3 {
 		Assert.assertEquals(actual, expected);
 
 	}
-	
+	@Feature("GMS camera")
+	@Epic("Blocking camera")
+	@Severity(SeverityLevel.CRITICAL)
 	@Test(priority=2, testName="Camera")
 	public void blockCamera() throws InterruptedException {
 
@@ -65,7 +75,9 @@ public class FacilitiesTests extends BaseTest3 {
 		Assert.assertEquals(actual, expected);
 
 	} 
-	
+	@Feature("GMS GPS")
+	@Epic("Blocking GPS")
+	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=3, testName="GPS")
 	public void blockGps() throws InterruptedException {
 		
@@ -85,7 +97,9 @@ public class FacilitiesTests extends BaseTest3 {
 		
 	}
 	
-	
+	@Feature("GMS Mobile data")
+	@Epic("Blocking Mobile data")
+	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=4, testName="Mobile data")
 	public void blockMobileData() throws InterruptedException {
 		
@@ -129,7 +143,9 @@ public class FacilitiesTests extends BaseTest3 {
 		
 	}
 	*/
-	
+	@Feature("GMS Airplane")
+	@Epic("Blocking Airplane")
+	@Severity(SeverityLevel.CRITICAL)
 	@Test(priority=5, testName="Airplane")
 	public void blockAirplane() throws InterruptedException {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
@@ -149,7 +165,9 @@ public class FacilitiesTests extends BaseTest3 {
 		Assert.assertEquals(actual, expected);
 		
 	}
-	
+	@Feature("Android restrictions")
+	@Epic("Reseting Android restrictions")
+	@Severity(SeverityLevel.TRIVIAL)
 	@Test(priority=6, testName="Reset restrictions")
 	public void resetRestrictions() throws InterruptedException {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);

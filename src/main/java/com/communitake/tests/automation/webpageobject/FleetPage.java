@@ -40,7 +40,7 @@ public class FleetPage extends SeleniumBasePage {
 	}
 
 	public void check(){
-		system.out.println("nothing")
+		System.out.println("nothing");
 	}
 
 }
