@@ -3,9 +3,9 @@
 <suite name="Suite">
 	<test thread-count="4" name="Test">
 		<classes>
-			<class name="com.communitake.tests.automation.intact4.FacilitiesTest" />
+			<!--class name="com.communitake.tests.automation.intact4.FacilitiesTest" /-->
 			<class name="com.communitake.tests.automation.ged.FacilitiesTest" />
-			<class name="com.communitake.tests.automation.gms.FacilitiesTests" />
+			<!--class name="com.communitake.tests.automation.gms.FacilitiesTests" /-->
 			<!--class name="com.communitake.tests.automation.intactR.FacilitiesTest" /-->
 		</classes>
 	</test> <!-- Test -->
