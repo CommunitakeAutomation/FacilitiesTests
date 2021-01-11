@@ -16,11 +16,18 @@ import com.communitake.tests.automation.webpageobject.AndroidRestrictionsPage;
 import com.communitake.tests.automation.webpageobject.HomePage;
 import com.communitake.tests.automation.webpageobject.PoliciesPage;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+
 
 
 public class FacilitiesTests extends BaseTest3 {
 	
-	
+	@Feature("GMS Bluetooth")
+	@Epic("Blocking Arcane Blutooth")
+	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=1, testName="Bluetooth")
 	public void blockBT() throws  InterruptedException {
 		
@@ -48,6 +55,9 @@ public class FacilitiesTests extends BaseTest3 {
 
 	}
 	
+	@Feature("GMS camera")
+	@Epic("Blocking Arcane camera")
+	@Severity(SeverityLevel.CRITICAL)
 	@Test(priority=2, testName="Camera")
 	public void blockCamera() throws InterruptedException {
 
@@ -68,6 +78,9 @@ public class FacilitiesTests extends BaseTest3 {
 
 	} 
 	
+	@Feature("GMS GPS")
+	@Epic("Blocking Arcane GPS")
+	@Severity(SeverityLevel.MINOR)
 	@Test(priority=3, testName="GPS")
 	public void blockGps() throws InterruptedException {
 		
@@ -87,6 +100,9 @@ public class FacilitiesTests extends BaseTest3 {
 		
 	}
 	
+	@Feature("GMS Mobile data")
+	@Epic("Blocking Arcane Mobile data")
+	@Severity(SeverityLevel.CRITICAL)
 	@Test(priority=4, testName="Mobile data")
 	public void blockMobileData() throws InterruptedException {
 		
@@ -131,6 +147,9 @@ public class FacilitiesTests extends BaseTest3 {
 	}
 	*/
 	
+	@Feature("Reset restrictions")
+	@Epic("Reset restrictions after suit")
+	@Severity(SeverityLevel.TRIVIAL)
 	@Test(priority=5, testName="Airplane")
 	public void blockAirplane() throws InterruptedException {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);

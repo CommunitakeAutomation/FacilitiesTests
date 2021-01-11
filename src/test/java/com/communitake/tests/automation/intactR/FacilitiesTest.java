@@ -20,9 +20,16 @@ import com.communitake.tests.automation.webpageobject.AndroidRestrictionsPage;
 import com.communitake.tests.automation.webpageobject.HomePage;
 import com.communitake.tests.automation.webpageobject.PoliciesPage;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+
 public class FacilitiesTest extends BaseTest {
 
-	
+	@Feature("INTACTR Bluetooth")
+	@Epic("Blocking Arcane Blutooth")
+	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=1, testName="Bluetooth")
 	public void blockBT() throws  InterruptedException {
 		
@@ -44,6 +51,9 @@ public class FacilitiesTest extends BaseTest {
 
 	}
 	
+	@Feature("INTACTR camera")
+	@Epic("Blocking Arcane camera")
+	@Severity(SeverityLevel.CRITICAL)
 	@Test(priority=2, testName="Camera")
 	public void blockCamera() throws InterruptedException {
 
@@ -62,6 +72,9 @@ public class FacilitiesTest extends BaseTest {
 
 	} 
 	
+	@Feature("INTACTR GPS")
+	@Epic("Blocking Arcane GPS")
+	@Severity(SeverityLevel.MINOR)
 	@Test(priority=3, testName="GPS")
 	public void blockGps() throws InterruptedException {
 		
@@ -82,6 +95,9 @@ public class FacilitiesTest extends BaseTest {
 		
 	}
 	
+	@Feature("INTACTR Factory reset")
+	@Epic("Blocking Arcane Factory reset")
+	@Severity(SeverityLevel.BLOCKER)
 	@Test(priority=4, testName="Factory reset")
 	public void blockFactoryReset() throws InterruptedException {
 		
@@ -101,6 +117,9 @@ public class FacilitiesTest extends BaseTest {
 		Assert.assertEquals(actual, expected);
 	}
 	
+	@Feature("INTACTR Mobile data")
+	@Epic("Blocking Arcane Mobile data")
+	@Severity(SeverityLevel.CRITICAL)
 	@Test(priority=5, testName="Mobile data")
 	public void blockMobileData() throws InterruptedException {
 		
@@ -120,6 +139,9 @@ public class FacilitiesTest extends BaseTest {
 		Assert.assertEquals(actual, expected);
 	}
 	
+	@Feature("INTACTR Airplane")
+	@Epic("Blocking Arcane Airplane")
+	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=6, testName="Airplane")
 	public void blockAirplane() throws InterruptedException {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
@@ -135,7 +157,10 @@ public class FacilitiesTest extends BaseTest {
 		String actual = morepage.getAirPlnBtnText();
 		Assert.assertEquals(actual, expected);
 	}
-
+	
+	@Feature("INTACTR Disallow install")
+	@Epic("Blocking Arcane installation")
+	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=7, testName="Disallow install app")
 	public void blockAppinst() throws  InterruptedException {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
@@ -153,6 +178,9 @@ public class FacilitiesTest extends BaseTest {
 		Assert.assertEquals(actual, expected);
 	}
 	
+	@Feature("INTACTR Disallow uninstall")
+	@Epic("Blocking Arcane uninstallation")
+	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=8, testName="Disallow uninstall app")
 	public void blockUninstallApp() throws InterruptedException {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
@@ -172,6 +200,9 @@ public class FacilitiesTest extends BaseTest {
 		Assert.assertEquals(actual, expected);
 	}
 	
+	@Feature("INTACTR SMS")
+	@Epic("Blocking Arcane SMS")
+	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=9, testName="Disallow SMS")
 	public void blockSmsApp() throws InterruptedException {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
@@ -205,6 +236,9 @@ public class FacilitiesTest extends BaseTest {
     }
 	*/
 	
+	@Feature("Reset restrictions")
+	@Epic("Reset restrictions after suit")
+	@Severity(SeverityLevel.TRIVIAL)
 	@Test(priority=11, testName="Reset restrictions")
 	public void resetRestrictions() throws InterruptedException {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
