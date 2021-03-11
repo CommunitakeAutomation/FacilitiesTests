@@ -122,8 +122,11 @@ public class FacilitiesTests extends BaseTest3 {
 		Assert.assertEquals(actual, expected);
 		
 	}
-	/*
-	@Test(priority=5, testName="Wifi")
+	
+	@Feature("GMS wifi")
+	@Epic("Blocking GMS wifi")
+	@Severity(SeverityLevel.CRITICAL)
+	@Test(priority=5, testName="wifi")
 	public void wifi1() throws  InterruptedException {
 		
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
@@ -145,12 +148,12 @@ public class FacilitiesTests extends BaseTest3 {
 		Assert.assertEquals(actual, expected);
 		
 	}
-	*/
 	
-	@Feature("Reset restrictions")
-	@Epic("Reset restrictions after suit")
-	@Severity(SeverityLevel.TRIVIAL)
-	@Test(priority=5, testName="Airplane")
+	
+	@Feature("GMS Airplane")
+	@Epic("Blocking GMS Airplane")
+	@Severity(SeverityLevel.CRITICAL)
+	@Test(priority=6, testName="Airplane")
 	public void blockAirplane() throws InterruptedException {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
 		androidRestrictionPage.blockWiFi(0);
@@ -170,7 +173,10 @@ public class FacilitiesTests extends BaseTest3 {
 		
 	}
 	
-	@Test(priority=6, testName="Reset restrictions")
+	@Feature("Reset restrictions")
+	@Epic("Reset restrictions after suit")
+	@Severity(SeverityLevel.TRIVIAL)
+	@Test(priority=7, testName="Reset restrictions")
 	public void resetRestrictions() throws InterruptedException {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
 		androidRestrictionPage.resetRestrictions(2);

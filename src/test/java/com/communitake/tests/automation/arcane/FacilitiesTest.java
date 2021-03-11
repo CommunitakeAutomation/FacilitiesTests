@@ -1,4 +1,4 @@
-package com.communitake.tests.automation.intact4;
+package com.communitake.tests.automation.arcane;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -234,7 +234,10 @@ public class FacilitiesTest extends BaseTest2 {
 		Assert.assertEquals(actual, expected);
 	}
 	
-	/*@Test(priority=10, testName="Wifi")
+	@Feature("Ancane wifi")
+	@Epic("Blocking Arcane wifi")
+	@Severity(SeverityLevel.CRITICAL)
+	@Test(priority=10, testName="wifi")
 	public void wifi1() throws  InterruptedException {
 		
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
@@ -242,7 +245,7 @@ public class FacilitiesTest extends BaseTest2 {
 		androidRestrictionPage.blockWiFi(1);
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
 		intactAppPage.turnOnOfWiFi();
-		intactAppPage.syncIntact4();
+		intactAppPage.syncIntact4(0);
 		Thread.sleep(2000);
 		intactAppPage.openAndroidSettings();
 		AndroidSettingsPage androidSettingsPage = new AndroidSettingsPage(mobileDriver);
@@ -254,7 +257,7 @@ public class FacilitiesTest extends BaseTest2 {
 		String actual = gedNetworkInternetPage.gedWifiBtnTxt();
 		Assert.assertEquals(actual, expected);
 		
-	}*/
+	}
 	
 	@Feature("Reset restrictions")
 	@Epic("Reset restrictions after suit")
@@ -267,7 +270,7 @@ public class FacilitiesTest extends BaseTest2 {
 		androidRestrictionPage.resetRestrictions(1);
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
 		intactAppPage.syncIntact4(0);
-		//intactAppPage.turnOnOfWiFi();
+		intactAppPage.turnOnOfWiFi();
 		Thread.sleep(3000);
 		
 		

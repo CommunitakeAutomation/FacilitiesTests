@@ -234,8 +234,11 @@ public class FacilitiesTest extends BaseTest1 {
 		String actual = smspage.getSmsPerMsg();
 		Assert.assertEquals(actual, expected);
 	}
-	/*
-	@Test(priority=10, testName="Wifi")
+	
+	@Feature("GED wifi")
+	@Epic("Blocking GED wifi")
+	@Severity(SeverityLevel.CRITICAL)
+	@Test(priority=10, testName="wifi")
 	public void wifi1() throws  InterruptedException {
 		
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
@@ -255,7 +258,7 @@ public class FacilitiesTest extends BaseTest1 {
 		Assert.assertEquals(actual, expected);
 		
 	}
-	*/
+	
 	
 	@Feature("Reset restrictions")
 	@Epic("Reset restrictions after suit")
@@ -268,6 +271,7 @@ public class FacilitiesTest extends BaseTest1 {
 		androidRestrictionPage.resetRestrictions(1);
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
 		intactAppPage.sync(0);
+		intactAppPage.turnOnOfWiFi();
 		Thread.sleep(3000);
 		
 		

@@ -1,4 +1,4 @@
-package com.communitake.tests.automation.intactR;
+package com.communitake.tests.automation.bond;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,6 +10,7 @@ import com.communitake.tests.automation.mobilepageobject.BlueToothPage;
 import com.communitake.tests.automation.mobilepageobject.CameraPage;
 import com.communitake.tests.automation.mobilepageobject.DataUsagePage;
 import com.communitake.tests.automation.mobilepageobject.DownloadFolderPage;
+import com.communitake.tests.automation.mobilepageobject.GedNetworkInternetPage;
 import com.communitake.tests.automation.mobilepageobject.InstallationAppPage;
 import com.communitake.tests.automation.mobilepageobject.IntactAppPage;
 import com.communitake.tests.automation.mobilepageobject.LocationPage;
@@ -27,7 +28,7 @@ import io.qameta.allure.SeverityLevel;
 
 public class FacilitiesTest extends BaseTest {
 
-	@Feature("INTACTR Bluetooth")
+	@Feature("Bond Bluetooth")
 	@Epic("Blocking Arcane Blutooth")
 	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=1, testName="Bluetooth")
@@ -35,67 +36,70 @@ public class FacilitiesTest extends BaseTest {
 		
 		HomePage homepage = new HomePage(driver);
 		homepage.clickPolicies();
-		PoliciesPage policiespage = new PoliciesPage(driver);
-		policiespage.clickAndroidRestriction();
+		PoliciesPage policiesPage = new PoliciesPage(driver);
+		policiesPage.clickAndroidRestriction();
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
 		Thread.sleep(1000);
 		androidRestrictionPage.BtConfig(1);
+		Thread.sleep(3000);
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
-		intactAppPage.sync(0);
-		intactAppPage.openRBTSet();
-		BlueToothPage bluetoothpage = new BlueToothPage(mobileDriver);
-		bluetoothpage.validBTClosed();
-		String expected = "Off";
-		String actual = bluetoothpage.BTclosedText();
+		intactAppPage.syncIntact4(0);
+		intactAppPage.openAndroidSettings();
+		AndroidSettingsPage androidSettingsPage = new AndroidSettingsPage(mobileDriver);
+		androidSettingsPage.openBTSetings();
+		BlueToothPage bluetoothPage = new BlueToothPage(mobileDriver);
+		bluetoothPage.openGedBTBtn();
+		bluetoothPage.validBTClosed();
+		String expected = "OFF";
+		String actual = bluetoothPage.gedBTClosedText();
 		Assert.assertEquals(actual, expected);
-
 	}
 	
-	@Feature("INTACTR camera")
+	@Feature("Bond camera")
 	@Epic("Blocking Arcane camera")
 	@Severity(SeverityLevel.CRITICAL)
 	@Test(priority=2, testName="Camera")
 	public void blockCamera() throws InterruptedException {
 
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
-		androidRestrictionPage.cameraStatus(2);
+		androidRestrictionPage.blockCamera();
+		Thread.sleep(1000);
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
-		intactAppPage.sync(0);
-		//Thread.sleep(3000);
+		intactAppPage.syncIntact4(0);
+		Thread.sleep(1000);
 		intactAppPage.Home();
 		MobileHomePage mobileHomePage = new MobileHomePage(mobileDriver);
-		mobileHomePage.openCamera();
+		mobileHomePage.openGedCamera();
 		CameraPage camerapage = new CameraPage(mobileDriver);
-		String expected = "Approve the application's access to the camera";
-		String actual = camerapage.cameraTextMessage();
+		String expected = "Camera has been disabled because of security policies.";
+		String actual = camerapage.gedCameraTxtMsg();
 		Assert.assertEquals(actual, expected);
 
 	} 
 	
-	@Feature("INTACTR GPS")
+	@Feature("Bond GPS")
 	@Epic("Blocking Arcane GPS")
 	@Severity(SeverityLevel.MINOR)
 	@Test(priority=3, testName="GPS")
 	public void blockGps() throws InterruptedException {
 		
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
+		Thread.sleep(1000);
 		androidRestrictionPage.gpsRestriction(1);
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
-		intactAppPage.sync(0);
-		Thread.sleep(30000);
-		intactAppPage.openNotifications();
-		intactAppPage.expendNotofocations();
-		intactAppPage.openLocNoti();
-		LocationPage locationpage = new LocationPage(mobileDriver);
-		locationpage.validLocClosed();
-		Thread.sleep(5000);
-		String expected = "Off";
-		String actual = locationpage.locationText();
+		intactAppPage.syncIntact4(0);
+		intactAppPage.openAndroidSettings();
+		AndroidSettingsPage androidSettingsPage = new AndroidSettingsPage(mobileDriver);
+		androidSettingsPage.openGedGpsStngs();
+		LocationPage locationPage = new LocationPage(mobileDriver);
+		locationPage.validLocClosed();
+		String expected = "OFF";
+		String actual = locationPage.gedLoacationText();
 		Assert.assertEquals(actual, expected);
 		
 	}
 	
-	@Feature("INTACTR Factory reset")
+	@Feature("Bond Factory reset")
 	@Epic("Blocking Arcane Factory reset")
 	@Severity(SeverityLevel.BLOCKER)
 	@Test(priority=4, testName="Factory reset")
@@ -105,41 +109,42 @@ public class FacilitiesTest extends BaseTest {
 		androidRestrictionPage.blockFactoryCb();
 		Thread.sleep(1000);
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
-		intactAppPage.sync(0);
-		Thread.sleep(10000);
+		intactAppPage.syncIntact4(0);
+		Thread.sleep(3000);
 		intactAppPage.openAndroidSettings();
 		AndroidSettingsPage androidSettingsPage = new AndroidSettingsPage(mobileDriver);
-		androidSettingsPage.clickOnBackup("Backup & reset");
-		BackupResetPage backupresetpage = new BackupResetPage(mobileDriver);
-		backupresetpage.openRestrictionMessage();
+		androidSettingsPage.openGedRestOp("System");
+		BackupResetPage resetPage = new BackupResetPage(mobileDriver);
+		resetPage.openRestrictionMessage();
 		String expected = "Action not allowed";
-		String actual = backupresetpage.getRestrictionMessage();
+		String actual = resetPage.getRestrictionMessage();
 		Assert.assertEquals(actual, expected);
 	}
 	
-	@Feature("INTACTR Mobile data")
+	@Feature("Bond Mobile data")
 	@Epic("Blocking Arcane Mobile data")
 	@Severity(SeverityLevel.CRITICAL)
 	@Test(priority=5, testName="Mobile data")
 	public void blockMobileData() throws InterruptedException {
 		
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
+		androidRestrictionPage.blockWiFi(0);
 		androidRestrictionPage.sdoMobileDataPolicy(1);
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
-		intactAppPage.sync(0);
-		Thread.sleep(3000);
+		intactAppPage.syncIntact4(0);
 		intactAppPage.openAndroidSettings();
 		AndroidSettingsPage androidSettingsPage = new AndroidSettingsPage(mobileDriver);
-		androidSettingsPage.openDataUsage("Data usage");
+		androidSettingsPage.openGedDataUsage();
 		DataUsagePage dataUsagePage = new DataUsagePage(mobileDriver);
-		dataUsagePage.validMoDaClosed();
-		Thread.sleep(5000);
+		dataUsagePage.clickOnDataBtn();
+		Thread.sleep(3000);
 		String expected = "OFF";
 		String actual = dataUsagePage.cellurDataText();
 		Assert.assertEquals(actual, expected);
+		
 	}
 	
-	@Feature("INTACTR Airplane")
+	@Feature("Bond Airplane")
 	@Epic("Blocking Arcane Airplane")
 	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=6, testName="Airplane")
@@ -148,17 +153,19 @@ public class FacilitiesTest extends BaseTest {
 		androidRestrictionPage.sdoMobileDataPolicy(0);
 		androidRestrictionPage.blockAirplaneCb();
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
-		intactAppPage.sync(0);
-		Thread.sleep(3000);
-		intactAppPage.openApmSet();
-		MorePage morepage = new MorePage(mobileDriver);
-		morepage.validApClosed();
+		intactAppPage.syncIntact4(0);
+		intactAppPage.openAndroidSettings();
+		AndroidSettingsPage androidSettingsPage = new AndroidSettingsPage(mobileDriver);
+		androidSettingsPage.openGedNtwInt();
+		GedNetworkInternetPage gedNetworkInternetPage = new GedNetworkInternetPage(mobileDriver);
+		gedNetworkInternetPage.clickApMdBtn();
 		String expected = "OFF";
-		String actual = morepage.getAirPlnBtnText();
+		String actual = gedNetworkInternetPage.getApMdBtnTxt();
 		Assert.assertEquals(actual, expected);
+		
 	}
 	
-	@Feature("INTACTR Disallow install")
+	@Feature("Bond Disallow install")
 	@Epic("Blocking Arcane installation")
 	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=7, testName="Disallow install app")
@@ -166,19 +173,23 @@ public class FacilitiesTest extends BaseTest {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
 		androidRestrictionPage.clickAppInstBlock();
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
-		intactAppPage.sync(0);
-		intactAppPage.Back();
-		intactAppPage.openDownloadFolder();
+		intactAppPage.syncIntact4(0);
+		intactAppPage.openAndroidSettings();
+		Thread.sleep(10000);
+		intactAppPage.openGedDownloadFolder("Storage", "Files");
 		DownloadFolderPage downloadfolderpage = new DownloadFolderPage(mobileDriver);
-		downloadfolderpage.clickOnAppR();
-		InstallationAppPage installationapppage = new InstallationAppPage(mobileDriver);
-		installationapppage.installApp();
-		String expected = "Package installer has stopped";
-		String actual = installationapppage.getInstMsg();
+		Thread.sleep(3000);
+		downloadfolderpage.clickOnAppIntact4("MyDeviceAndroidClient-ReleaseSip-release.apk");
+		InstallationAppPage installationAppAage = new InstallationAppPage(mobileDriver);
+		//Thread.sleep(5000);
+		//installationAppAage.installApp();
+		String expected = "Action not allowed";
+		String actual = installationAppAage.getGedInstBlkMsg();
 		Assert.assertEquals(actual, expected);
+		
 	}
 	
-	@Feature("INTACTR Disallow uninstall")
+	@Feature("Bond Disallow uninstall")
 	@Epic("Blocking Arcane uninstallation")
 	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=8, testName="Disallow uninstall app")
@@ -186,21 +197,23 @@ public class FacilitiesTest extends BaseTest {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
 		androidRestrictionPage.clickAppUninstallBlock();
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
-		intactAppPage.sync(0);
-		Thread.sleep(3000);
+		intactAppPage.syncIntact4(0);
 		intactAppPage.openAndroidSettings();
 		AndroidSettingsPage androidSettingsPage = new AndroidSettingsPage(mobileDriver);
-		androidSettingsPage.clickOnApps("Apps");
-		AppsPage appspage = new AppsPage(mobileDriver);
-		appspage.clickAppiumSet();
+		androidSettingsPage.openGedApps();
+		AppsPage appsPage = new AppsPage(mobileDriver);
+		appsPage.openAllApps();
+		Thread.sleep(2000);
+		appsPage.clickAppiumSet();
 		AppiumAppPage appiumAppPage = new AppiumAppPage(mobileDriver);
 		appiumAppPage.uninstallAppiumApp();
 		String expected = "Action not allowed";
 		String actual = appiumAppPage.getAppiumAppMessage();
 		Assert.assertEquals(actual, expected);
+		
 	}
 	
-	@Feature("INTACTR SMS")
+	@Feature("Bond SMS")
 	@Epic("Blocking Arcane SMS")
 	@Severity(SeverityLevel.NORMAL)
 	@Test(priority=9, testName="Disallow SMS")
@@ -208,8 +221,8 @@ public class FacilitiesTest extends BaseTest {
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
 		androidRestrictionPage.clickDisSmsCb();
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
-		intactAppPage.sync(0);
-		Thread.sleep(5000);
+		intactAppPage.syncIntact4(0);
+		Thread.sleep(1000);
 		intactAppPage.Home();
 		MobileHomePage mobileHomePage = new MobileHomePage(mobileDriver);
 		mobileHomePage.openSmsApp();
@@ -218,23 +231,31 @@ public class FacilitiesTest extends BaseTest {
 		String actual = smspage.getSmsPerMsg();
 		Assert.assertEquals(actual, expected);
 	}
-	/*
+	
+	@Feature("Bond wifi")
+	@Epic("Blocking Arcane wifi")
+	@Severity(SeverityLevel.CRITICAL)
 	@Test(priority=10, testName="wifi")
-	public void wifi() throws  InterruptedException {
+	public void wifi1() throws  InterruptedException {
+		
 		AndroidRestrictionsPage androidRestrictionPage = new AndroidRestrictionsPage(driver);
+		androidRestrictionPage.sdoMobileDataPolicy(0);
 		androidRestrictionPage.blockWiFi(1);
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
-		intactAppPage.sync(0);
+		intactAppPage.turnOnOfWiFi();
+		intactAppPage.syncIntact4(0);
+		Thread.sleep(2000);
 		intactAppPage.openAndroidSettings();
 		AndroidSettingsPage androidSettingsPage = new AndroidSettingsPage(mobileDriver);
-		androidSettingsPage.openWifiSet();
-		WiFiPage wifipage = new WiFiPage(mobileDriver);
-		wifipage.validWifiClosed();
-		String expected = "Off";
-		String actual = wifipage.wifiClosedText();
+		androidSettingsPage.openGedNtwInt();
+		GedNetworkInternetPage gedNetworkInternetPage = new GedNetworkInternetPage(mobileDriver);
+		gedNetworkInternetPage.clickGedWifiBtn();
+		Thread.sleep(3000);
+		String expected = "OFF";
+		String actual = gedNetworkInternetPage.gedWifiBtnTxt();
 		Assert.assertEquals(actual, expected);
-    }
-	*/
+		
+	}
 	
 	@Feature("Reset restrictions")
 	@Epic("Reset restrictions after suit")
@@ -246,7 +267,8 @@ public class FacilitiesTest extends BaseTest {
 		Thread.sleep(1000);
 		androidRestrictionPage.resetRestrictions(1);
 		IntactAppPage intactAppPage = new IntactAppPage(mobileDriver);
-		intactAppPage.sync(0);
+		intactAppPage.syncIntact4(0);
+		intactAppPage.turnOnOfWiFi();
 		Thread.sleep(3000);
 		
 		

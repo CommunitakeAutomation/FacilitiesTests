@@ -6,7 +6,7 @@
 			<class name="com.communitake.tests.automation.intact4.FacilitiesTest" />
 			<class name="com.communitake.tests.automation.ged.FacilitiesTest" />
 			<class name="com.communitake.tests.automation.gms.FacilitiesTests" />
-			<class name="com.communitake.tests.automation.intactR.FacilitiesTest" />
+			<class name="com.communitake.tests.automation.bond.FacilitiesTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

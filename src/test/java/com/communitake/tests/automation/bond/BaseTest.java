@@ -1,4 +1,4 @@
-package com.communitake.tests.automation.intactR;
+package com.communitake.tests.automation.bond;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -17,7 +17,7 @@ public abstract class BaseTest extends com.communitake.tests.automation.BaseTest
 	
 	@BeforeSuite
 	public AppiumDriver<MobileElement> mobile() throws MalformedURLException  {
-		return mobile("CTIPR01", "WG9SDIUKHIRWNZGA", "7");
+		return mobile("CTIP511", "CTGED010003017", "9");
 		//		AppiumServiceBuilder builder = new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\Nissim Automation\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"));
 //		service = builder.build();
 //		service = AppiumDriverLocalService.buildDefaultService();

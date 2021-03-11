@@ -18,7 +18,7 @@ public abstract class BaseTest1 extends BaseTest {
 	
 	@BeforeSuite
 	public AppiumDriver<MobileElement> mobile() throws MalformedURLException  {
-		return mobile("CTGED01", "CTGED010000468", "9");
+		return mobile("CTGED01", "CTGED010002914", "9");
 //		service = AppiumDriverLocalService.buildDefaultService();
 //		service.start();
 //		DesiredCapabilities caps = new DesiredCapabilities();
